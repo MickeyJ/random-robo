@@ -3,7 +3,7 @@ const EventEmitter = require('events').EventEmitter;
 const colors = require('colors');
 
 const Play = function(timeLimit){
-  var e = new EventEmitter();
+  const e = new EventEmitter();
   process.nextTick(() =>{
     e.emit('start');
     let plays = 0,
@@ -14,8 +14,8 @@ const Play = function(timeLimit){
       let pOnePlay = Math.floor(Math.random() * (Math.floor(Math.random() * 600)) * 100);
       let pTwoPlay = Math.floor(Math.random() * (Math.floor(Math.random() * 600)) * 100);
 
-      pOnePoints += pOnePlay * Math.floor(Math.random() * 1000);
-      pTwoPoints += pTwoPlay * Math.floor(Math.random() * 1000);
+      pOnePoints += pOnePlay + Math.floor(Math.random() * 1000);
+      pTwoPoints += pTwoPlay + Math.floor(Math.random() * 1000);
       e.emit('playing', plays, pOnePoints, pTwoPoints);
 
       if(plays === timeLimit){
